@@ -5,16 +5,16 @@ const btn = document.querySelector("button");
 //creo la lista da mostrare
 let list = [];
 //creo la lista dei numeri inseriti
-let numberInput = [];
-console.log(numberInput)
+let arrNumberInput = [];
+let numeroInserito = false;
 
 
 //ciclo per generare i numeri random
-for (let i = 0; i < 1; i++) {
+for (let i = 0; i < 5; i++) {
   const numeroRandom = generateRandomNumber(list, 1, 100);
   list.push(numeroRandom);
 }
-console.log(list)
+console.log("lista mostrata", list)
 //inserisco la lista nell'HTML
 h1.innerHTML = list;
 
@@ -23,25 +23,24 @@ setTimeout(function () {
   h1.classList.add("hide");
   input.classList.remove("hide");
   btn.classList.remove("hide");
-}, 1000)
+}, 5000)
 
-//TODO:prima di prendere i valori inseriti devo controllare che siano giusti (dei numeri)
-
-
-//prendo i valori inseriti e li confronto con la lista dei numeri
-//se sono tutti esatti output giusto altrimenti riprova
-btn.addEventListener("click", function(){
-  numberInput.push(input.value);
-
-  if (list.includes(numberInput)){
-    console.log("sbagliato")
-  }else{
-    console.warn("giusto")
-  }
-
-  
+btn.addEventListener("click", function () {
+  //prendo i valori inseriti e li aggiungo all'array arrNumberInput
+  arrNumberInput.push(parseInt(input.value));
+  console.log("numeri inseriti", arrNumberInput);  
+  //reset input
+  input.value = ``;
 })
 
+//FIXME: Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
+
+//se sono tutti esatti output giusto altrimenti riprova
+if (list.includes(arrNumberInput)) {
+  console.log("giusto")
+} else {
+  console.log("sbagliato")
+}
 
 
 

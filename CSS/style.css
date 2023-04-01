@@ -19,6 +19,11 @@ body{
   margin: 0 auto;
   padding: 5rem;
   background-color: darkcyan;
+  color: white;
+}
+
+input{
+  width: 300px;
 }
 
 .hide{
